@@ -19,10 +19,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.lower()
     if text == "i love u":
         # Button ke saath response
-        keyboard = [[InlineKeyboardButton(text="I love u too! 💖", callback_data="love_response")]]
-        reply_markup = InlineKeyboardButton(text=keyboard)
-        await update.message.reply_text("I love you too! 😘", reply_markup=keyboard_response)
-        
+        keyboard = [[InlineKeyboardButton("I love u too! 💖", callback_data="love_response")]]
+        reply_markup = InlineKeyboardMarkup(keyboard)  # Fixed: Corrected variable name and usage
+        await update.message.reply_text("I love u too! 😘", reply_markup=reply_markup)
+
 # Button click ka handler
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
